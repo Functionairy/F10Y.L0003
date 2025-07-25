@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="Main">
     <TargetFramework>netstandard2.1</TargetFramework>
     <NoWarn>1573;1587;1591;IDE0130</NoWarn>
@@ -9,14 +9,12 @@
     <Authors>DCoats</Authors>
     <Company>Functionairy</Company>
     <Copyright>Copyright (c) Functionairy 2025</Copyright>
-    <Description>Extended standard types .NET Standard 2.1 foundation library.</Description>
+    <Description>Library for the Has&lt;T&gt; return type.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Functionairy/F10Y.L0003.git</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\F10Y.L0000\source\F10Y.L0000\F10Y.L0000.csproj" />
     <ProjectReference Include="..\..\..\F10Y.T0004\source\F10Y.T0004\F10Y.T0004.csproj" />
-    <ProjectReference Include="..\F10Y.L0003.L001\F10Y.L0003.L001.csproj" />
   </ItemGroup>
 </Project>

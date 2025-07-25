@@ -20,7 +20,21 @@ namespace F10Y.L0003
         public static EqualityComparerBased_FrameworkEqualityComparer<T> From(
             IEqualityComparer<T> equalityComparer)
         {
-            var output = new EqualityComparerBased_FrameworkEqualityComparer<T>(equalityComparer);
+            var output = new EqualityComparerBased_FrameworkEqualityComparer<T>(
+                equalityComparer,
+                Instances.HashCodeOperator.Default);
+
+            return output;
+        }
+
+        public static EqualityComparerBased_FrameworkEqualityComparer<T> From(
+            IEqualityComparer<T> equalityComparer,
+            Func<T, int> hashCodeGenerator)
+        {
+            var output = new EqualityComparerBased_FrameworkEqualityComparer<T>(
+                equalityComparer,
+                hashCodeGenerator);
+
             return output;
         }
 
@@ -28,12 +42,15 @@ namespace F10Y.L0003
 
 
         private IEqualityComparer<T> EqualityComparer { get; }
+        private Func<T, int> HashCodeGenerator { get; }
 
 
         public EqualityComparerBased_FrameworkEqualityComparer(
-            IEqualityComparer<T> equalityComparer)
+            IEqualityComparer<T> equalityComparer,
+            Func<T, int> hashCodeGenerator)
         {
             this.EqualityComparer = equalityComparer;
+            this.HashCodeGenerator = hashCodeGenerator;
         }
 
         public bool Equals(T x, T y)
@@ -44,7 +61,8 @@ namespace F10Y.L0003
 
         public int GetHashCode(T obj)
         {
-            throw new NotImplementedException();
+            var output = this.HashCodeGenerator(obj);
+            return output;
         }
     }
 }

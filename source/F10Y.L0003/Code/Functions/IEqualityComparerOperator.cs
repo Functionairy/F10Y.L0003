@@ -10,9 +10,19 @@ namespace F10Y.L0003
     [FunctionsMarker]
     public partial interface IEqualityComparerOperator
     {
+        public FrameworkEqualityComparerBased_EqualityComparer<T> Default_For<T>()
+            => this.From(Framework.EqualityComparer<T>.Default);
+
         public EqualityComparerBased_FrameworkEqualityComparer<T> From<T>(
             IEqualityComparer<T> equalityComparer)
             => EqualityComparerBased_FrameworkEqualityComparer<T>.From(equalityComparer);
+
+        public EqualityComparerBased_FrameworkEqualityComparer<T> From<T>(
+            IEqualityComparer<T> equalityComparer,
+            Func<T, int> hashCodeGenerator)
+            => EqualityComparerBased_FrameworkEqualityComparer<T>.From(
+                equalityComparer,
+                hashCodeGenerator);
 
         public FrameworkEqualityComparerBased_EqualityComparer<T> From<T>(
             Framework.IEqualityComparer<T> equalityComparer)
