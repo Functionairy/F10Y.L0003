@@ -31,6 +31,18 @@ namespace F10Y.L0003
     }
 
     [UtilityTypeMarker]
+    public readonly struct OverloadToken<T1, T2>
+    {
+        public static OverloadToken<T1, T2> Instance { get; } = new OverloadToken<T1, T2>();
+    }
+
+    [UtilityTypeMarker]
+    public readonly struct OverloadToken<T1, T2, T3>
+    {
+        public static OverloadToken<T1, T2, T3> Instance { get; } = new OverloadToken<T1, T2, T3>();
+    }
+
+    [UtilityTypeMarker]
     public readonly struct OverloadToken
     {
 
