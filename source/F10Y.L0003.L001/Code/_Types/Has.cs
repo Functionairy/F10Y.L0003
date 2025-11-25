@@ -79,7 +79,7 @@ namespace F10Y.L0003.L001
         /// </remarks>
         public static Has<T> From<T>(T value_OrDefault)
         {
-            var exists = Instances.DefaultOperator.Is_Default(value_OrDefault);
+            var exists = Instances.DefaultOperator.Is_NotDefault(value_OrDefault);
 
             var wasFound = Has.From(value_OrDefault, exists);
             return wasFound;
