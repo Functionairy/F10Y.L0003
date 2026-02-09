@@ -22,13 +22,9 @@ namespace F10Y.L0003.Internal
         }
 
         public IEnumerator<T> GetEnumerator()
-        {
-            return this.Enumerable.GetEnumerator();
-        }
+            => this.Enumerable.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.Enumerable.GetEnumerator();
-        }
+            => this.Enumerable.GetEnumerator();
     }
 }
