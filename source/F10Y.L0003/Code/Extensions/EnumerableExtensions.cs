@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using For_System = System.Collections.Generic;
 
@@ -16,6 +17,9 @@ namespace F10Y.L0003.Extensions
 
         public static IDistinctEnumerable<TValue> As_DistinctEnumerable<TValue>(this IEnumerable<TValue> enumerable)
             => Instances.EnumerableOperator.As_Distinct(enumerable);
+
+        public static IOrderedEnumerable<TValue> As_OrderedEnumerable<TValue>(this IEnumerable<TValue> enumerable)
+            => Instances.EnumerableOperator.As_OrderedEnumerable(enumerable);
 
         public static IDistinctCollection<TValue> To_DistinctCollection<TValue>(this IEnumerable<TValue> enumerable,
             For_System.IEqualityComparer<TValue> equalityComparer)

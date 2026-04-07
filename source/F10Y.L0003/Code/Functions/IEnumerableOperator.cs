@@ -5,6 +5,7 @@ using System.Linq;
 using F10Y.T0002;
 using F10Y.T0011;
 
+using F10Y.L0000.Extensions;
 using F10Y.L0003.Extensions;
 
 using For_System = System.Collections.Generic;
@@ -12,6 +13,12 @@ using For_System = System.Collections.Generic;
 
 namespace F10Y.L0003
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <remarks>
+    /// <inheritdoc cref="Documentation.Project_SelfDescription" path="/summary"/>
+    /// </remarks>
     [FunctionsMarker]
     public partial interface IEnumerableOperator :
         L0000.IEnumerableOperator
@@ -29,6 +36,21 @@ namespace F10Y.L0003
         /// </summary>
         IDistinctEnumerable<T> As_Distinct<T>(IEnumerable<T> enumerable)
             => new Internal.DistinctEnumerable<T>(enumerable);
+
+        IOrderedEnumerable<T> As_OrderedEnumerable<T>(IEnumerable<T> enumerable)
+            => new Internal.OrderedEnumerable<T>(enumerable);
+
+        IOrderedEnumerable <T> Create_OrderedEnumerable<T, TKey>(
+            IEnumerable<T> values,
+            Func<T, TKey> key_Selector,
+            IComparer<TKey> comparer,
+            bool descending)
+            => values.OrderBy(
+                key_Selector,
+                comparer)
+                .Modify_If(
+                    descending,
+                    x => x.Reverse());
 
         IDistinctCollection<T> To_DistinctCollection<T>(
             IEnumerable<T> enumerable,
